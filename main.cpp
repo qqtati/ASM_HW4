@@ -279,7 +279,7 @@ int startTheStore(int argc, char **argv) {
 
   // Тут параллельно происходит взаимодействие продавцов и покупателей
   // Ждём пока кончатся все покупатели
-  for (_opaque_pthread_t *threads_buyer: threads_buyers) {
+  for (unsigned long long threads_buyer: threads_buyers) {
     pthread_join(threads_buyer, nullptr);
   }
 
@@ -289,7 +289,7 @@ int startTheStore(int argc, char **argv) {
   cout << "\n";
 
   // Ждём пока закроются все отделы
-  for (_opaque_pthread_t *threads_seller: threads_sellers) {
+  for (unsigned long long threads_seller: threads_sellers) {
     pthread_join(threads_seller, nullptr);
   }
 
